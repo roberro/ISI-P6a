@@ -1,0 +1,51 @@
+<head>
+  <title>Leaderboard</title>
+</head>
+
+<body>
+  <div id="outer">
+    {{> leaderboard}}
+    {{> nuevo}}
+  </div>
+</body>
+
+<template name="leaderboard">
+  <div class="botonord">
+	<button id="ordenar">Ordenar {{orden}}</button>
+  </div>
+  <div class="randomiza">
+ 	 <input type="button" class="random" value="Random" />
+  </div>
+
+  <div class="leaderboard">
+    {{#each players}}
+      {{> player}}
+    {{/each}}
+  </div>
+
+  {{#if selected_name}}
+  <div class="details">
+    <div class="name">{{selected_name}}</div>
+    <input type="button" class="inc" value="Give 5 points" />
+  </div>
+  {{/if}}
+
+  {{#unless selected_name}}
+  <div class="none">Click a player to select</div>
+  {{/unless}}
+</template>
+
+<template name="player">
+  <div class="player {{selected}}">
+    <span class="name">{{name}}</span>
+    <span class="score">{{score}}</span>
+  </div>
+</template>
+<template name="nuevo">
+  <div class="new">
+    <label for="Nombre">Nuevo jugador:</label>
+    <input id="Nombre" name="Nombre" type="text" />
+    <input type="button" class="new" value="Submit" />
+  </div>
+</template>
+
